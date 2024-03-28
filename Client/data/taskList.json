@@ -1,0 +1,17 @@
+{
+  "name": "Work Tasks",
+  "tasks": [
+    {
+      "title": "Finish Project Proposal",
+      "priority": "high",
+      "status": "in progress",
+      "due_date": "2024-03-15"
+    },
+    {
+      "title": "Prepare Presentation",
+      "priority": "medium",
+      "status": "todo",
+      "due_date": "2024-03-20"
+    }
+  ]
+}

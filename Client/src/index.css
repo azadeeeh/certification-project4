@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body{
+  background-color:white ; /*#FEE6DA*/
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+
+}
+
+.navBar{
+  margin-top:30px;
+}
+
+.navBar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navBar ul li {
+  margin-right: 20px;
+}
+
+.navBar ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.navBar ul li a:hover{
+  color: #FF853F;
+}
+
+.navBar ul li a.active{
+  color: #FF853F;
+}
+
+.backButton{
+  border-radius: 5px;
+  background-color:#FEB487;
+  border: solid black;
+  color: white;
+  margin-top: 20px;
+}
+

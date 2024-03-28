@@ -1,0 +1,15 @@
+{
+  "name": "Inspirational Quotes",
+  "quotes": [
+    {
+      "quote": "The only way to do great work is to love what you do.",
+      "author": "Steve Jobs",
+      "category": "inspirational"
+    },
+    {
+      "quote": "Believe you can and you're halfway there.",
+      "author": "Theodore Roosevelt",
+      "category": "inspirational"
+    }
+  ]
+}

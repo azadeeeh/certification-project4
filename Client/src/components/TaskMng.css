@@ -1,0 +1,64 @@
+body{
+    text-align: center;
+
+}
+
+.tasksListContainer{
+    margin-top: 60px;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+ 
+  }
+
+
+.createListButton{
+    border-radius: 5px;
+    background-color:#FEB487;
+    border: solid black;
+    height: 50px;
+    width: 250px;
+    color: white;
+    margin: 40px;
+    font-size: 20px;
+  }
+
+
+.listInput{
+    margin-bottom: 30px;
+    border-radius: 5px;;
+}
+
+
+
+.listSubmitButton{
+
+    border-radius: 5px;
+    background-color:#FEB487;
+    border: solid black;
+    color: white;
+    
+   
+
+}
+
+.add-deleteTaskButton{
+
+    border-radius: 5px;
+    background-color:#FEB487;
+    border: solid black;
+    color: white;
+    margin-left: 20px;
+
+}
+
+.displayTask{
+    margin: 5px;
+}
