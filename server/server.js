@@ -16,10 +16,22 @@ const app = express()                       // Creates an express server in app
  */
 const morgan = require('morgan')
 
+const taskRouter = require('./routers/task')
+const taskListRouter = require('./routers/taskList')
+/**
+ * Initial server setup
+ * We need to use cors so we can receive requests from localhost
+ * We need express.json so we can receive requests with JSON data
+ */
+app.use(cors())
+app.use(express.json())
 /**
  * Adding middleware and routes
  */
 app.use(morgan('dev'))
+app.use('/api/task', taskRouter)
+app.use('/api/taskList', taskListRouter)
+
 
 /**
  * Connect to database, start server & listen to server

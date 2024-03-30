@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 // Basket schema
 const taskListSchema = new mongoose.Schema({
-    title: String,
+    name: String,
     tasks: [
         {
             type: mongoose.Schema.Types.ObjectId,
