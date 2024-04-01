@@ -18,6 +18,8 @@ const morgan = require('morgan')
 
 const taskRouter = require('./routers/task')
 const taskListRouter = require('./routers/taskList')
+const peopleRouter = require('./routers/people')
+const loginRouter = require('./routers/login')
 /**
  * Initial server setup
  * We need to use cors so we can receive requests from localhost
@@ -31,6 +33,8 @@ app.use(express.json())
 app.use(morgan('dev'))
 app.use('/api/task', taskRouter)
 app.use('/api/taskList', taskListRouter)
+app.use('/api/people', peopleRouter)
+app.use('/api/login', loginRouter)
 
 
 /**
