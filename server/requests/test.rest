@@ -1,4 +1,64 @@
-get  http://localhost:3001/api/task/about
+GET  http://localhost:3001/api/task
 
+###
+
+POST http://localhost:3001/api/task/660a3da6fbe85849cd11799d
+Content-Type: application/json
+
+{
+   "title":"cook", "due_date":"2/3/2024", "status":"to do", "priority":"yes" 
+}
+
+
+###
+DELETE http://localhost:3001/api/task/6607c681a5488e39393b1b79
+###
+
+GET  http://localhost:3001/api/taskList
+
+###
+
+POST http://localhost:3001/api/taskList/660a35120bbabd6016da8161
+Content-Type: application/json
+
+{
+    "name": "Home"
+}
+
+###
+
+DELETE http://localhost:3001/api/taskList/660a3da6fbe85849cd11799d
+Content-Type: application/json
+
+{
+    "personId": "660a35120bbabd6016da8161"
+}
+
+###
+
+GET  http://localhost:3001/api/people
+
+###
+
+POST http://localhost:3001/api/people
+Content-Type: application/json
+
+{
+    "name": "taha",
+    "password":"test3"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "name": "Azadeh",
+    "password":"test"
+}
+
+###
+DELETE  http://localhost:3001/api/people/660a42944c59f486a1074d4c
 
 

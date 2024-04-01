@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose');
 const taskRouter = express.Router()
 
 /**
@@ -41,12 +42,22 @@ taskRouter.post('/:id', async (request, response) => {
     //const taskId = request.params.id
     const { title, due_date, status, priority } = request.body
     const taskListId = request.params.id;
+    const { isValidObjectId } = require('mongoose');
+
+    // Error handling: Check if taskListId is a valid ObjectId
+    if (!isValidObjectId(taskListId)) {
+        return response.status(400).send({
+            error: 'invalid taskList ID'
+        });
+    }
+
     // Error handling
     if (!title) {
         return response.status(400).send({
             error: 'missing content in body'
         })
     }
+
     // Get taskList
     const taskList = await TaskList.findById(taskListId)
     if (!taskList) {

@@ -31,40 +31,63 @@ taskListRouter.get('/:id', async (request, response) => {
 
 /**
  * @receives a POST request to the URL: http://localhost:3001/api/taskList/:id
-   Note: The :id required is the id of the person the taskList should belong to
+ * Note: The :id required is the id of the person the taskList should belong to
  * @returns the newly created taskList
  */
 taskListRouter.post('/:id', async (request, response) => {
-    console.log('Received POST request to /api/taskList');
-    console.log('Request body:', request.body);
+    try {
+        // Get fields
+        const personId = request.params.id;
+        const { name } = request.body;
+        const { isValidObjectId } = require('mongoose');
 
-    // Get fields
-    const personId = request.params.id
-    const { name } = request.body
-    // Error handling
-    if (!name) {
-        return response.status(400).send({
-            error: 'missing content in body'
-        })
+        console.log(`Received POST request to /api/taskList/${personId}`);
+        console.log('Request body:', request.body);
+        //check if the id is correct
+        if (!isValidObjectId(personId)) {
+            console.log(`Invalid person ID: ${personId}`);
+            return response.status(400).send({
+                error: 'invalid person ID'
+            });
+        }
+
+        // Error handling
+        if (!name) {
+            return response.status(400).send({
+                error: 'missing content in body'
+            });
+        }
+
+        // Find the person
+        const person = await Person.findById(personId);
+        if (!person) {
+            console.log(`Person with ID ${personId} not found`);
+            return response.status(404).send({
+                error: 'no such person'
+            });
+        }
+
+        // Create new taskList and save it
+        const taskList = new TaskList({
+            name
+        });
+        const savedTaskList = await taskList.save();
+
+        // Add the taskList to the person and save
+        person.taskLists.push(savedTaskList._id);
+        await person.save();
+
+        console.log('TaskList created successfully:', savedTaskList);
+        // Return the saved taskList
+        return response.status(201).json(savedTaskList);
+    } catch (error) {
+        console.error('Error in POST /api/taskList/:id:', error);
+        return response.status(500).send({
+            error: 'internal server error'
+        });
     }
-    //get the person
-    const person = await Person.findById(personId)
-    if (!person) {
-        return response.status(400).send({
-            error: 'no such person'
-        })
-    }
-    // Create new taskList and save it
-    const taskList = new TaskList({
-        name
-    })
-    const savedTaskList = await taskList.save()
-    //add the baskcket to the person and save 
-    person.taskLists = person.taskLists.concat(savedTaskList._id)
-    await person.save()
-    // Return the saved taskList
-    response.status(201).send(savedTaskList)
-})
+});
+
 
 /**
  * @receives a DELETE request to the URL: http://localhost:3001/api/taskList/:id
@@ -76,6 +99,11 @@ taskListRouter.delete('/:id', async (request, response) => {
     // Get fields
     const taskListId = request.params.id
     const { personId } = request.body
+    if (!personId) {
+        return response.status(400).send({
+            error: 'add person id'
+        })
+    }
     //get the person
     const person = await Person.findById(personId)
     if (!person) {

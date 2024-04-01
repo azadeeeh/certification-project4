@@ -97,7 +97,9 @@ peopleRouter.delete('/:id', async (request, response) => {
     await Promise.all(taskListIds.map(id => TaskList.findByIdAndDelete(id)))
     //delete the tasls related to that person
     await Promise.all(taskIds.map(id => Task.findByIdAndDelete(id)))
-    response.status(200).send()
+    response.json({
+        message: 'deleted'
+    })
 })
 
 module.exports = peopleRouter
