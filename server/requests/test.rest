@@ -2,11 +2,11 @@ GET  http://localhost:3001/api/task
 
 ###
 
-POST http://localhost:3001/api/task/660a3da6fbe85849cd11799d
+POST http://localhost:3001/api/task/660a43e635f2e7a73cae66b9
 Content-Type: application/json
 
 {
-   "title":"cook", "due_date":"2/3/2024", "status":"to do", "priority":"yes" 
+   "title":"meeting", "due_date":"2/3/2024", "status":"to do", "priority":"yes" 
 }
 
 
@@ -22,7 +22,7 @@ POST http://localhost:3001/api/taskList/660a35120bbabd6016da8161
 Content-Type: application/json
 
 {
-    "name": "Home"
+    "name": "work"
 }
 
 ###
@@ -44,7 +44,7 @@ POST http://localhost:3001/api/people
 Content-Type: application/json
 
 {
-    "name": "taha",
+    "name": "tahaa",
     "password":"test3"
 }
 
@@ -59,6 +59,6 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:3001/api/people/660a42944c59f486a1074d4c
+DELETE  http://localhost:3001/api/people/660a435035f2e7a73cae66a7
 
 
