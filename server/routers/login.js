@@ -18,16 +18,20 @@ loginRouter.post('/', async (request, response) => {
     const { name, password } = request.body
     //get user
     const person = await Person.findOne({ name })
-    //check is pass is correct
-    const passwordCheck = person === null ? false : await bcrypt.compare(password, person.passwordHash)
-    // Error handling
-    if (!passwordCheck) {
-        return response.status(400).send({
-            error: 'invalid user or pass'
-        })
+
+    // If the user is not found, return an error
+    if (!person) {
+        return response.status(400).json({ error: 'Invalid username or password' });
     }
 
-    response.status(201).send(person)
+    //check is pass is correct
+    const passwordCheck = await bcrypt.compare(password, person.passwordHash)
+    // Error handling for pass
+    if (!passwordCheck) {
+        return response.status(400).json({ error: 'Invalid username or password' });
+    }
+    const { passwordHash, ...personWithoutPassword } = person.toObject();
+    response.status(200).json(personWithoutPassword);
 
 })
 

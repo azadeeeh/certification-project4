@@ -25,7 +25,9 @@ const loginRouter = require('./routers/login')
  * We need to use cors so we can receive requests from localhost
  * We need express.json so we can receive requests with JSON data
  */
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5173',
+}));
 app.use(express.json())
 /**
  * Adding middleware and routes
