@@ -13,7 +13,7 @@ const TaskList = () => {
 
     const taskLists = useSelector((state) => state.taskMng.taskLists);
     const dispatch = useDispatch();
-
+    //manage visibility state of the taskForm, it is based on the listId and toggles fprm for adding or editing ntasks
     const handleToggleTaskForm = (listId) => {
         setShowTaskForm(prevState => ({
             ...prevState,
