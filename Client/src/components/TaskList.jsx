@@ -117,6 +117,7 @@ const TaskList = () => {
                             <div>
                                 {list.name}
 
+
                                 <button className='add-deleteTaskButton' onClick={() => handleToggleTaskForm(list.id)}>{showTaskForm[list.id] ? 'Hide Task Form' : 'Add Task'}</button>
                                 <button className='add-deleteTaskButton' onClick={() => handleDeleteList(list.id)}>Delete List</button>
                                 <button className='add-deleteTaskButton' onClick={() => handleEditListName(list.id, list.name)}>Edit</button>

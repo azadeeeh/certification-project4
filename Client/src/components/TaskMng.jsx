@@ -4,6 +4,7 @@ import { toggleForm, createList, addTaskToList, deleteList, deleteTask, updateLi
 
 import CreateListForm from './CreateListForm'; // Import the TaskForm component
 import TaskList from './TaskList';
+import Login from './LoginForm';
 import "./TaskMng.css";
 
 
@@ -158,6 +159,7 @@ const TaskMng = () => {
         <div className="tasksListContainer">
 
             <h1>Welcome</h1>
+            <Login />
             <button className='createListButton' onClick={handleToggleForm} >Create a new Task List</button>
             <CreateListForm showForm={showForm} onCreateList={handleCreateList} />
 
